@@ -6,9 +6,11 @@ import org.example.io.TributFileReader;
 import org.example.model.Event;
 import org.example.model.Gift;
 import org.example.model.Tribut;
+import org.example.service.TributStats;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,8 +22,13 @@ public class Main {
             System.out.println("Tributes: " + tributes.size());
             System.out.println("Events: " + events.size());
             System.out.println("Gifts: " + gifts.size());
-            for (Tribut tribute:tributes) {
-                System.out.println(tribute);
+            try (Scanner scanner = new Scanner(System.in)) {
+                System.out.print("Input district: ");
+                int district = Integer.parseInt(scanner.nextLine().trim());
+
+                TributStats tributStats = new TributStats();
+                tributStats.filterByDistrict(tributes, district)
+                        .forEach(System.out::println);
             }
         } catch (IOException e) {
             System.out.println("Failed to read resources: " + e.getMessage());
