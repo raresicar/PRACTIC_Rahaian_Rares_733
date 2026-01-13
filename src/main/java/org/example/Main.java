@@ -24,6 +24,7 @@ public class Main {
             System.out.println("Tributes: " + tributes.size());
             System.out.println("Events: " + events.size());
             System.out.println("Gifts: " + gifts.size());
+            System.out.println();
 
             // 2
             try (Scanner scanner = new Scanner(System.in)) {
@@ -32,12 +33,14 @@ public class Main {
                 TributStats tributStats = new TributStats();
                 tributStats.filterByDistrict(tributes, district)
                         .forEach(System.out::println);
+                System.out.println();
             }
 
             // 3
             TributStats tributStats = new TributStats();
             List<Tribut> sortedTributes = tributStats.sortBySkillThanName(tributes);
             sortedTributes.forEach(System.out::println);
+            System.out.println();
 
             // 4
             new TributFileWriter().writeToFile(sortedTributes, "tributes_sorted.txt");
@@ -45,6 +48,7 @@ public class Main {
             // 5
             EventStats eventStats = new EventStats();
             eventStats.printFirstFiveComputedPoints(events);
+            System.out.println();
 
             // 6
 
