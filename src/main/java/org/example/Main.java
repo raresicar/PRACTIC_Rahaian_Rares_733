@@ -3,6 +3,7 @@ package org.example;
 import org.example.io.EventFileReader;
 import org.example.io.GiftFileReader;
 import org.example.io.TributFileReader;
+import org.example.io.TributFileWriter;
 import org.example.model.Event;
 import org.example.model.Gift;
 import org.example.model.Tribut;
@@ -10,6 +11,7 @@ import org.example.service.TributStats;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -31,8 +33,9 @@ public class Main {
                         .forEach(System.out::println);
             }
             TributStats tributStats = new TributStats();
-            tributStats.sortBySkillThanName(tributes)
-                    .forEach(System.out::println);
+            List<Tribut> sortedTributes = tributStats.sortBySkillThanName(tributes);
+            sortedTributes.forEach(System.out::println);
+            new TributFileWriter().writeToFile(sortedTributes, "tributes_sorted.txt");
         } catch (IOException e) {
             System.out.println("Failed to read resources: " + e.getMessage());
         }
