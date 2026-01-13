@@ -25,6 +25,10 @@ public class Main {
             System.out.println("Events: " + events.size());
             System.out.println("Gifts: " + gifts.size());
             System.out.println();
+            for (Tribut tribute : tributes) {
+                System.out.println(tribute);
+            }
+            System.out.println();
 
             // 2
             try (Scanner scanner = new Scanner(System.in)) {
