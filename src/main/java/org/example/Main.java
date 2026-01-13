@@ -1,17 +1,30 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import org.example.io.EventFileReader;
+import org.example.io.GiftFileReader;
+import org.example.io.TributFileReader;
+import org.example.model.Event;
+import org.example.model.Gift;
+import org.example.model.Tribut;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        try {
+            ArrayList<Tribut> tributes = new TributFileReader().readFromResources("tributes.json");
+            ArrayList<Event> events = new EventFileReader().readFromResources("events.json");
+            ArrayList<Gift> gifts = new GiftFileReader().readFromResources("gifts.json");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+            System.out.println("Tributes: " + tributes.size());
+            System.out.println("Events: " + events.size());
+            System.out.println("Gifts: " + gifts.size());
+            for (Tribut tribute:tributes) {
+                System.out.println(tribute);
+            }
+        } catch (IOException e) {
+            System.out.println("Failed to read resources: " + e.getMessage());
         }
     }
 }
