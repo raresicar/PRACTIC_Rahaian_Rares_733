@@ -4,7 +4,6 @@ import org.example.model.Tribut;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class TributStats {
@@ -21,6 +20,5 @@ public class TributStats {
                         .thenComparing(Tribut::getName))
                 .collect(Collectors.toList());
     }
-
 }
 

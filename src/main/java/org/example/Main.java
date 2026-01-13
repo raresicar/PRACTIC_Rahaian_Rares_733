@@ -29,7 +29,6 @@ public class Main {
             try (Scanner scanner = new Scanner(System.in)) {
                 System.out.print("Input district: ");
                 int district = Integer.parseInt(scanner.nextLine().trim());
-
                 TributStats tributStats = new TributStats();
                 tributStats.filterByDistrict(tributes, district)
                         .forEach(System.out::println);
@@ -46,6 +45,11 @@ public class Main {
             // 5
             EventStats eventStats = new EventStats();
             eventStats.printFirstFiveComputedPoints(events);
+
+            // 6
+
+            // 7
+
         } catch (IOException e) {
             System.out.println("Failed to read resources: " + e.getMessage());
         }
