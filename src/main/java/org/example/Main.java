@@ -30,6 +30,9 @@ public class Main {
                 tributStats.filterByDistrict(tributes, district)
                         .forEach(System.out::println);
             }
+            TributStats tributStats = new TributStats();
+            tributStats.sortBySkillThanName(tributes)
+                    .forEach(System.out::println);
         } catch (IOException e) {
             System.out.println("Failed to read resources: " + e.getMessage());
         }

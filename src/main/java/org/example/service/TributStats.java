@@ -2,7 +2,9 @@ package org.example.service;
 
 import org.example.model.Tribut;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class TributStats {
@@ -13,5 +15,12 @@ public class TributStats {
                 .collect(Collectors.toList());
     }
 
+    public List<Tribut> sortBySkillThanName(List<Tribut> tributes) {
+        return tributes.stream()
+                .sorted(Comparator.comparingInt(Tribut::getSkillLevel).reversed()
+                        .thenComparing(Tribut::getName))
+                .collect(Collectors.toList());
+    }
 
 }
+
