@@ -36,6 +36,17 @@ public class Event {
         return day;
     }
 
+    public int getComputedPoints() {
+        return switch (type) {
+            case "FOUND_SUPPLIES" -> points + 2 * day;
+            case "INJURED" -> points - day;
+            case "ATTACK" -> points * 2 + day;
+            case "HELPED_ALLY" -> points + 5;
+            case "SPONSORED" -> points + 10;
+            default -> points;
+        };
+    }
+
     @Override
     public String toString() {
         return "Event{" +
